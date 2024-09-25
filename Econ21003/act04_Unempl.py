@@ -146,8 +146,6 @@ else:
                 #     pdf = pdfkit.from_string(html, configuration=config)
                 # else:
                 #     pdf = pdfkit.from_string(html, False)
-                html = template
-
                 # Convert HTML to PDF using xhtml2pdf
                 pdf = BytesIO()
                 pisa.CreatePDF(BytesIO(html.encode('utf-8')), dest=pdf)
@@ -159,5 +157,6 @@ else:
                     "⬇️ Download pdf",
                     data=pdf,
                     file_name=f"{st.session_state.username}_{act_name}.pdf",
-                    mime="application/octet-stream",
+                    # mime="application/octet-stream",
+                    mime="application/pdf",
                 )
