@@ -1,0 +1,23 @@
+[
+  {
+    "qtype": "mc_quest",
+    "label": "Refer to Figure 14-1.  The firm's short-run supply curve is its marginal cost curve above",
+    "options": ["A. $3.", "B. $6.30.", "C. $1.", "D. $4.50."]
+  },
+  {
+    "qtype": "float_num",
+    "label": "Waht is the approximate numerical value of the profit at $8"
+  },
+  {
+    "qtype": "oneline_text",
+    "label": "This is an example of one line text (maximum 60 words) question"
+  },
+  {
+    "qtype": "manyline_text",
+    "label": "This is  an example of multiple line text entering question"
+  },
+  {
+    "qtype": "drawing_quest",
+    "label": "This is  an example of canvas drawing question"
+  }
+]

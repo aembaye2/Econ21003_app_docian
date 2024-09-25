@@ -1,0 +1,5 @@
+build-essential
+    wkhtmltopdf
+    pkg-config    
+    default-libmysqlclient-dev
+

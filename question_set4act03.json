@@ -1,0 +1,38 @@
+[
+  {
+    "qtype": "mc_quest",
+    "label": "If the GDP of an economy increases, which of the following must occur?",
+    "options": [
+      "A. saving increases",
+      "B. expenditure increases.",
+      "C. real GDP increases.",
+      "D. investment increases."
+    ]
+  },
+
+  {
+    "qtype": "mc_quest",
+    "label": "For the purpose of calculating GDP, investment is spending on",
+    "options": [
+      "A. stocks, bonds, and other financial assets.",
+      "B. real estate and financial assets such as stocks and bonds.",
+      "C. capital equipment, inventories, and structures, including household purchases of new housing.",
+      "D. capital equipment, inventories, and structures, excluding household purchases of new housing."
+    ]
+  },
+
+  {
+    "qtype": "float_num",
+    "label": "One bag of oranges is sold for \\$6.00 to a company that turns them into juice which is sold to consumers for \\$12.00.  Another bag of oranges is purchased by a grocery store for \\$6.00 who then sells it to a consumer for \\$7.  Taking these four transactions into account, how much is added to GDP?"
+  },
+
+  {
+    "qtype": "oneline_text",
+    "label": "List a market transaction that would not be included in GDP. (2-3 words)"
+  },
+
+  {
+    "qtype": "manyline_text",
+    "label": "Discuss the limitations of GDP as a measure of economic well-being. (2-3 sentences)"
+  }
+]

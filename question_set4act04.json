@@ -1,0 +1,27 @@
+[
+  {
+    "qtype": "oneline_text",
+    "label": "(official u-rate increase or decrease) Jemila lost her job and begins looking for a new one. "
+  },
+  {
+    "qtype": "oneline_text",
+    "label": "(official u-rate increase or decrease) West, a steelworker who has been out of work since his mill closed last year, becomes discouraged and gives up looking for work. "
+  },
+  {
+    "qtype": "oneline_text",
+    "label": "(official u-rate increase or decrease) Paul, the sole earner in his family of 5, just lost his \\$100,000 job as a research scientist; and he takes a part-time job at McDonald's until he can find another job in his field. "
+  },
+
+  {
+    "qtype": "oneline_text",
+    "label": "(Frictional (or Structural), increase or decrease) The govt eliminates the minimum wage."
+  },
+  {
+    "qtype": "oneline_text",
+    "label": "(Frictional (or Structural), increase or decrease) The govt increases unemployment insurance benefits.  "
+  },
+  {
+    "qtype": "oneline_text",
+    "label": "(Frictional (or Structural), increase or decrease) A new law bans labor unions."
+  }
+]
