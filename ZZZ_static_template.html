@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input to PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <h1>Enter Your Information</h1>
+    <form id="inputForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" /><br /><br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="4" cols="50"></textarea
+      ><br /><br />
+      <button type="button" onclick="downloadPDF()">Download as PDF</button>
+    </form>
+
+    <script>
+      async function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        // Create a new jsPDF instance
+        const doc = new jsPDF();
+
+        // Add text to the PDF
+        doc.text(`Name: ${name}`, 10, 10);
+        doc.text(`Email: ${email}`, 10, 20);
+        doc.text(`Message: ${message}`, 10, 30);
+
+        // Save the PDF
+        doc.save("user_input.pdf");
+      }
+    </script>
+  </body>
+</html>

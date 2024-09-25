@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input to PDF Converter</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      textarea {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 10px;
+      }
+      button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User Input to PDF Converter</h1>
+    <textarea id="userInput" placeholder="Enter your text here..."></textarea
+    ><br />
+    <button id="saveButton">Save</button>
+    <button id="generatePDF">Generate PDF</button>
+
+    <script>
+      // Save data temporarily in localStorage
+      const inputField = document.getElementById("userInput");
+      const saveButton = document.getElementById("saveButton");
+
+      // Load saved data if it exists
+      window.onload = function () {
+        const savedData = localStorage.getItem("userInput");
+        if (savedData) {
+          inputField.value = savedData;
+        }
+      };
+
+      saveButton.addEventListener("click", () => {
+        localStorage.setItem("userInput", inputField.value);
+        alert("Data saved temporarily!");
+      });
+
+      document.getElementById("generatePDF").addEventListener("click", () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.text(inputField.value, 10, 10);
+        doc.save("userInput.pdf");
+      });
+    </script>
+  </body>
+</html>
