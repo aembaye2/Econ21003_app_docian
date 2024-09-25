@@ -20,7 +20,7 @@ import sqlite3
 import sqlalchemy.exc
 from collections import OrderedDict
 from helper_fns import start_assessment, next_question, previous_question, finish_assessment, serialize_data, make_ss_user_inputs, make_html_template
-
+from xhtml2pdf import pisa
 
 due_date = datetime(2024, 9, 26, 23, 0)  # Adding hours to the due date
 
@@ -137,16 +137,21 @@ else:
             if submit:
                 html = template
 
-                local_wkhtmltopdf_path = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-                is_local = os.path.exists(local_wkhtmltopdf_path)
+                # local_wkhtmltopdf_path = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+                # is_local = os.path.exists(local_wkhtmltopdf_path)
 
-                if is_local:
-                    config = pdfkit.configuration(
-                        wkhtmltopdf=local_wkhtmltopdf_path)
-                    pdf = pdfkit.from_string(html, configuration=config)
-                else:
-                    pdf = pdfkit.from_string(html, False)
+                # if is_local:
+                #     config = pdfkit.configuration(
+                #         wkhtmltopdf=local_wkhtmltopdf_path)
+                #     pdf = pdfkit.from_string(html, configuration=config)
+                # else:
+                #     pdf = pdfkit.from_string(html, False)
+                html = template
 
+                # Convert HTML to PDF using xhtml2pdf
+                pdf = BytesIO()
+                pisa.CreatePDF(BytesIO(html.encode('utf-8')), dest=pdf)
+                pdf = pdf.getvalue()
                 st.success(
                     "🎉 Your PDF file has been generated! Download it below and submit it in gradescope!")
 
