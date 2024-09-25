@@ -148,8 +148,15 @@ else:
                 #     pdf = pdfkit.from_string(html, False)
                 # Convert HTML to PDF using xhtml2pdf
                 pdf = BytesIO()
-                pisa.CreatePDF(BytesIO(html.encode('utf-8')), dest=pdf)
+                pisa_status = pisa.CreatePDF(
+                    BytesIO(html.encode('utf-8')), dest=pdf)
                 pdf = pdf.getvalue()
+                # Check if PDF is generated successfully
+                if pdf and pisa_status.err == 0:
+                    print("PDF generated successfully.")
+                else:
+                    print("Failed to generate PDF.")
+
                 st.success(
                     "🎉 Your PDF file has been generated! Download it below and submit it in gradescope!")
 
