@@ -128,42 +128,38 @@ else:
                     # st.write(
                     #     f"User input saved as .json file in the file full path: {full_path_db} or {json_file}")
                     st.write(f"Your work will be saved in: {full_path_db}")
-            submit = st.button(
-                "Generate PDF", key="generate_button")
 
             # generate template.html with rendered user_inputs
             template = make_html_template(questions)
 
-            if submit:
-                html = template
-
-                # local_wkhtmltopdf_path = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-                # is_local = os.path.exists(local_wkhtmltopdf_path)
-
-                # if is_local:
-                #     config = pdfkit.configuration(
-                #         wkhtmltopdf=local_wkhtmltopdf_path)
-                #     pdf = pdfkit.from_string(html, configuration=config)
-                # else:
-                #     pdf = pdfkit.from_string(html, False)
-                # Convert HTML to PDF using xhtml2pdf
+            # Function to generate PDF
+            def generate_pdf(html):
                 pdf = BytesIO()
                 pisa_status = pisa.CreatePDF(
                     BytesIO(html.encode('utf-8')), dest=pdf)
-                pdf = pdf.getvalue()
+                pdf.seek(0)
+                return pdf, pisa_status.err
+
+            # Button to generate PDF
+            generate_pdf_button = st.button(
+                "Generate PDF", key="generate_button")
+            if generate_pdf_button:
+                html = template  # Assuming 'template' is defined elsewhere in your code
+                pdf, err = generate_pdf(html)
+
                 # Check if PDF is generated successfully
-                if pdf and pisa_status.err == 0:
-                    print("PDF generated successfully.")
+                if pdf and err == 0:
+                    st.session_state.pdf = pdf.getvalue()
+                    st.success(
+                        "🎉 Your PDF file has been generated! Download it below and submit it in gradescope!")
                 else:
-                    print("Failed to generate PDF.")
+                    st.error("Failed to generate PDF.")
 
-                st.success(
-                    "🎉 Your PDF file has been generated! Download it below and submit it in gradescope!")
-
+            # Button to download PDF
+            if 'pdf' in st.session_state:
                 st.download_button(
                     "⬇️ Download pdf",
-                    data=pdf,
+                    data=st.session_state.pdf,
                     file_name=f"{st.session_state.username}_{act_name}.pdf",
-                    # mime="application/octet-stream",
                     mime="application/pdf",
                 )
